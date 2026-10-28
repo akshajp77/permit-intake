@@ -1,12 +1,19 @@
 "use server";
 import {supabase,configured} from "@/lib/supabase/server";
 import {redirect} from "next/navigation";
+import {explainSendFailure,authFailureDetails} from "@/lib/auth/errors";
 export async function sendCode(form:FormData){
  if(!configured()) redirect("/login?error=Configure+Supabase+first");
  const email=String(form.get("email")??"").trim();
  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) redirect("/login?error=Enter+a+valid+email");
  const db=await supabase(); const {error}=await db.auth.signInWithOtp({email});
- if(error) redirect("/login?error=Unable+to+send+code.+Check+SMTP+and+rate+limits.");
+ if(error) {
+   const details=authFailureDetails(error);
+   console.error("auth.send_code_failed",details);
+   const message=explainSendFailure(error);
+   const diagnostic=process.env.NODE_ENV === "development" ? ` [${details.code}; HTTP ${details.status ?? "unavailable"}]` : "";
+   redirect(`/login?error=${encodeURIComponent(message+diagnostic)}`);
+ }
  redirect("/login?sent=1");
 }
 export async function verifyCode(form:FormData){
