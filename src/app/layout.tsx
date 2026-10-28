@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Building2, FolderOpen, ListChecks, ArrowUpRight } from "lucide-react";
+import "./globals.css";
+export const metadata:Metadata={title:"Permit Intake | Review workspace",description:"A staff workspace for residential permit intake."};
+export default function Layout({children}:{children:React.ReactNode}) {return <html lang="en"><body><aside><Link className="brand" href="/"><Building2 size={26}/><span>Permit<span className="brand-sub">INTAKE WORKSPACE</span></span></Link><div className="city"><span className="city-icon">P</span><div>Demo municipality<small>Residential permitting</small></div></div><p className="nav-label">WORKSPACE</p><nav><Link href="/"><FolderOpen size={18}/> Sample projects</Link><Link href="/sample"><ListChecks size={18}/> Sample review</Link><Link href="/workspace"><ArrowUpRight size={18}/> Live workspace</Link></nav><div className="sidebar-bottom"><span className="dot"/> Day 1 development build<p>Staff make the final decision.</p></div></aside><div className="main"><header><span>Development services / <b>Permit intake</b></span><Link className="button small" href="/login">Sign in</Link></header>{children}</div></body></html>}
