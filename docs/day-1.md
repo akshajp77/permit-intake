@@ -31,3 +31,5 @@ The demo checklist is illustrative, not a verified Prosper checklist. Import and
 Local lint, seven tests (including actual synthetic PDF extraction), production build, and TypeScript passed. npm install reported zero known dependency vulnerabilities. Supabase isolation SQL, external OTP delivery and paid AI smoke tests are pending credentials.
 
 Browser checks passed: export blocked until all sample decisions exist; text download works; 390px sample layout has no horizontal overflow; unconfigured login is disabled.
+
+Desktop update: full-width dashboard; viewport-height review with independent evidence/findings scrolling and visible export actions. Verified at 1366x768, 1440x900, and 1920x1080 without horizontal overflow. Lint, seven tests, build, and typecheck passed.
