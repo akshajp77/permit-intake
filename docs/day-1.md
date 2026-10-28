@@ -33,3 +33,11 @@ Local lint, seven tests (including actual synthetic PDF extraction), production 
 Browser checks passed: export blocked until all sample decisions exist; text download works; 390px sample layout has no horizontal overflow; unconfigured login is disabled.
 
 Desktop update: full-width dashboard; viewport-height review with independent evidence/findings scrolling and visible export actions. Verified at 1366x768, 1440x900, and 1920x1080 without horizontal overflow. Lint, seven tests, build, and typecheck passed.
+
+## Supabase paused — local workflow delivered
+
+Per user direction, SMTP/auth integration is deferred. `/desk` accepts local PDFs in memory, validates packet limits, shows a native browser PDF preview, supports manual dispositions and page citations, and downloads a text draft. No authentication, server upload, storage, or AI is required for this route. Changes to packet contents clear prior decisions. Refresh intentionally clears the session.
+
+Verified 13 tests, lint, production build and TypeScript. Browser check at 1440x900: actual synthetic PDF opened, incomplete export blocked, completed export downloaded, packet removal reset export eligibility, no horizontal overflow. Native PDF support depends on browser settings; an Open PDF link is provided.
+
+This does not complete Day 2's authenticated upload, checklist publication and durable job tasks. Those remain pending alongside Supabase setup.

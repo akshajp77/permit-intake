@@ -13,6 +13,12 @@ npm run dev
 
 Open http://localhost:3000. `/` and `/sample` work without credentials. The sample uses synthetic, hand-authored findings. Its decisions are in memory and its export is a text demonstration, not the final audited PDF workflow.
 
+## Continue without Supabase
+
+Open `/desk` for the browser-only manual review workflow. Enter a project name, add PDFs, inspect them side by side with the illustrative checklist, record decisions and page references, and export a UTF-8 text draft. No files are uploaded or persisted, and refreshing clears the session. Limits: five PDFs, 25 MB and 40 pages combined. Encrypted or damaged PDFs are rejected. Adding or removing documents resets review decisions.
+
+This is a manual workflow. AI review, city-approved rules, accounts, storage and jobs remain pending. The existing CLI AI spike is separate.
+
 ## Enable real login and projects
 
 1. Create a new development project at https://supabase.com/dashboard.
